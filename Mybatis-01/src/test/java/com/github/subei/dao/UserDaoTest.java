@@ -5,9 +5,29 @@ import com.github.subei.utils.MybatisUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserDaoTest {
+
+    @Test
+    public void getUserLike(){
+        //第一步：获得SqlSession对象
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        List<User> userList = mapper.getUserLike("%欣%");
+
+        for (User user:userList){
+            System.out.println(user);
+        }
+
+        //关闭SqlSession
+        sqlSession.close();
+    }
+
     @Test
     public void test(){
         //第一步：获得SqlSession对象
@@ -57,6 +77,24 @@ public class UserDaoTest {
 
         //提交事务
         sqlSession.commit();
+
+        //关闭SqlSession
+        sqlSession.close();
+    }
+
+    @Test
+    public void addUser2(){
+        //第一步：获得SqlSession对象
+        SqlSession sqlSession = MybatisUtils.getSqlSession();
+
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+
+        Map<String, Object> map = new HashMap<String, Object>();
+
+        map.put("userid",5);
+        map.put("passWord","2222333");
+
+        mapper.addUser2(map);
 
         //关闭SqlSession
         sqlSession.close();

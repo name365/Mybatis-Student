@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace=绑定一个对应的Dao/Mapper接口 -->
 <mapper namespace="com.github.subei.dao.UserMapper">
+    <select id="getUserLike" resultType="com.github.subei.pojo.User">
+        select * from mybatis.user where name like #{value };
+    </select>
+
     <select id="getUserList" resultType="com.github.subei.pojo.User">
         select * from mybatis.user;
     </select>
@@ -15,6 +19,11 @@
     <!--对象中的属性，可以直接取出来-->
     <insert id="addUser" parameterType="com.github.subei.pojo.User">
         insert into mybatis.user (id, name, pwd) values (#{id},#{name},#{pwd});
+    </insert>
+
+    <!-- 对象中的属性，可以直接取出来传递map的key -->
+    <insert id="addUser2" parameterType="map">
+        insert into mybatis.user (id, pwd) values (#{userid},#{passWord});
     </insert>
 
     <update id="updateUser" parameterType="com.github.subei.pojo.User">
