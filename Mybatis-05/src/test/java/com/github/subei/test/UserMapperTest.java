@@ -12,15 +12,28 @@ public class UserMapperTest {
     @Test
     public void test(){
         SqlSession sqlSession = MybatisUtils.getSqlSession();
+        // 底层主要应用反射
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
 
-        // 底层主要应用反射
+        mapper.deleteUser(5);
 
+        sqlSession.close();
+    }
+}
+
+/*
         List<User> users = mapper.getUsers();
         for(User user : users){
             System.out.println(user);
         }
 
-        sqlSession.close();
-    }
-}
+        User userByID = mapper.getUserByID(1);
+        System.out.println(userByID);
+
+        mapper.addUser(new User(5,"hello","123456"));
+
+        mapper.updateUser(new User(5,"to","213213"));
+
+        mapper.deleteUser(5);
+
+ */
