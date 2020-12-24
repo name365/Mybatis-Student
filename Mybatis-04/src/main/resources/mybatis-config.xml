@@ -11,6 +11,10 @@
         <property name="pwd" value="root"/>
     </properties>
 
+    <settings>
+        <setting name="logImpl" value="LOG4J"/>
+    </settings>
+
     <!--  可以给实体类起别名  -->
     <typeAliases>
 <!--        <typeAlias type="com.github.User" alias="User"/>-->

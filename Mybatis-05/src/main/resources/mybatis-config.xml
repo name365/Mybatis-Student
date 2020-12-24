@@ -11,8 +11,9 @@
         <property name="pwd" value="root"/>
     </properties>
 
+    <!--  标准的日志工厂实现  -->
     <settings>
-        <setting name="logImpl" value="LOG4J"/>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
     </settings>
 
     <!--  可以给实体类起别名  -->
@@ -35,11 +36,9 @@
         
     </environments>
 
-    <!--  每一个Mapper.xml都需要在mybatis核心配置文件中注册！  -->
+    <!--绑定接口-->
     <mappers>
-<!--        <mapper resource="com/github/subei/dao/UserMapper.xml"/>-->
-<!--        <mapper class="com.github.UserMapper"/>-->
-        <package name="com.github.subei.dao"/>
+        <mapper class="com.github.subei.dao.UserMapper"/>
     </mappers>
 
 </configuration>

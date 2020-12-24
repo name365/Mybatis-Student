@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace=绑定一个对应的Dao/Mapper接口 -->
-<mapper namespace="com.github.subei.dao.UserMapper">
+<mapper namespace="com.github.UserMapper">
 
     <!-- 结果集映射 -->
     <resultMap id="userMap" type="User">
@@ -17,4 +17,13 @@
         select id,name,pwd from mybatis.user where id = #{id};
     </select>
 
+    <!-- 分页 -->
+    <select id="getUserByLimit" parameterType="map" resultMap="userMap">
+        select * from  mybatis.user limit #{startIndex},#{pageSize}
+    </select>
+
+    <!-- 分页2 -->
+    <select id="getUserByRowBounds" resultMap="userMap">
+        select * from  mybatis.user
+    </select>
 </mapper>
