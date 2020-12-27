@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--configuration核心配置文件-->
+<configuration>
+
+    <!--  引入外部文件  -->
+    <properties resource="db.properties">
+        <property name="username" value="root"/>
+        <property name="pwd" value="root"/>
+    </properties>
+
+    <!--  标准的日志工厂实现  -->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <!--  可以给实体类起别名  -->
+    <typeAliases>
+<!--        <typeAlias type="com.github.User" alias="User"/>-->
+        <package name="com.github.subei.pojo"/>
+    </typeAliases>
+
+    <environments default="development">
+        
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+                <property name="username" value="${username}"/>
+                <property name="password" value="${pwd}"/>
+            </dataSource>
+        </environment>
+        
+    </environments>
+
+    <mappers>
+        <mapper class="com.github.subei.dao.TeacherMapper"/>
+        <mapper class="com.github.subei.dao.StudentMapper"/>
+    </mappers>
+
+</configuration>

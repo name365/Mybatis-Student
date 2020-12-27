@@ -10,7 +10,7 @@ import java.util.List;
 
 public class UserMapperTest {
     @Test
-    public void test(){
+    public void test() {
         SqlSession sqlSession = MybatisUtils.getSqlSession();
         // 底层主要应用反射
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
